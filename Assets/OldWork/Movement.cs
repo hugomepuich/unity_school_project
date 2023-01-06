@@ -47,7 +47,6 @@ public class Movement : MonoBehaviour
     {
         Vector3 direction = DirectionToVector3(dir);
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
-        
     }
     
     private enum Direction 

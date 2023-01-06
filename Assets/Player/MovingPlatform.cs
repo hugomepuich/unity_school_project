@@ -1,25 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class MovingPlatform : MonoBehaviour
 {
-    private float travel_distance = 60f;
+    public float travel_distance = 60f;
     private Vector3 base_position;
     private bool retour = false;
     public float speed = 5f;
-
-    public List<GameObject> contact_objects;
     
+    private bool _break = false;
     
+    public bool inv = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        contact_objects = new List<GameObject>();
-        contact_objects.Add(this.gameObject);
         base_position = transform.position;
     }
     
@@ -27,19 +26,33 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (_break)
+        {
+            return;
+        }
+        
         float dist = Vector3.Distance(transform.position, base_position);
 
-        if (dist > travel_distance)
+        if (dist > travel_distance && !retour)
         {
-            retour = true;
+            StartCoroutine(Pause());
         }
         else if (dist < 0.5f)
         {
             retour = false;
         }
         
-        transform.position = transform.position + ((retour ? Vector3.left : Vector3.right) * speed) * 0.5f *  Time.deltaTime;
+        transform.position = transform.position + ((retour ? (inv ? Vector3.forward : Vector3.left) : (inv ? Vector3.back : Vector3.right)) * speed) * 0.5f *  Time.deltaTime;
         
+    }
+
+    IEnumerator Pause()
+    {
+        _break = true;
+        yield return new WaitForSeconds(3);
+        retour = true;
+        _break = false;
     }
 
 }

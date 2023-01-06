@@ -13,7 +13,7 @@ public class PlatformDetector : MonoBehaviour
         
     }
 
-    private void OnCollisionStay(Collision collisionInfo)
+    private void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.transform.GetComponent<MovingPlatform>())
         {

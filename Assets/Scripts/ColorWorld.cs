@@ -37,7 +37,7 @@ public class ColorWorld : MonoBehaviour
         {
             ColorEnv cenv = co.GetComponent<ColorEnv>();
             ColorEnv.ItemColor item_color = cenv.GetColor();
-            co.SetActive(item_color != c && item_color != ColorEnv.ItemColor.White);
+            co.SetActive(item_color != c); //&& item_color != ColorEnv.ItemColor.White);
             if (cenv.inverted)
             {
                 co.SetActive(!co.activeSelf);

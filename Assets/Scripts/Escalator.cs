@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Escalator : MonoBehaviour
 {
-    private float travel_distance = 40f;
+    public float travel_distance = 60f;
     private Vector3 base_position;
     private bool retour = false;
     public float speed = 100f;
