@@ -13,6 +13,8 @@ public class Receiver : MonoBehaviour
         if (col == co)
         {
             ColorWorld.ChangeColor(ColorEnv.ItemColor.White);
+            GameObject.FindWithTag("manager").GetComponent<Interacter>().ResetCubeObject();
+            Destroy(this.gameObject);
         }
         
     }

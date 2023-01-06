@@ -8,7 +8,7 @@ public class CubeRotation : MonoBehaviour
     public ColorEnv.ItemColor cube_color;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ChangeColor(cube_color);
     }

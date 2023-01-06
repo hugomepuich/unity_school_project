@@ -10,7 +10,7 @@ public class ColorWorld : MonoBehaviour
     
     static GameObject[] env_items;
     static GameObject[] color_items;
-    // Start is called before the first frame update
+
     void Start()
     {
         env_items = GameObject.FindGameObjectsWithTag("env");
@@ -30,8 +30,6 @@ public class ColorWorld : MonoBehaviour
                 mr.material.color = ColorEnv.ItemColorToMaterialColor(c);
             }
         }
-        
-        
         
         foreach (GameObject co in color_items)
         {

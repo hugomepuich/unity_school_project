@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +26,10 @@ public class Interacter : MonoBehaviour
     private void Start()
     {
         playerobj = GameObject.FindWithTag("Player");
-        cubeobject.SetActive(hasCube);
+        if (cubeobject)
+        {
+            cubeobject.SetActive(hasCube);
+        }
     }
 
     void Update()
@@ -76,6 +78,11 @@ public class Interacter : MonoBehaviour
         }
     }
 
+    public void ResetCubeObject()
+    {
+        cubeobject.SetActive(false);
+    }
+
     void PickUpCube(CubeObject c)
     {
         print(c.GetColor());
@@ -89,7 +96,10 @@ public class Interacter : MonoBehaviour
     void DropCube()
     {
         hasCube = false;
+ 
+        
         GameObject cube = Instantiate(cubeprefab, playerobj.transform.position + 2*Vector3.up + Vector3.forward, Quaternion.identity);
+        cube.GetComponent<CubeObject>().cube_color = current_cube_color;
         cube.GetComponent<CubeObject>().SetColor(current_cube_color);
         cubeobject.SetActive(false);
     }

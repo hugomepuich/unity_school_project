@@ -11,7 +11,6 @@ public class Escalator : MonoBehaviour
 
     public List<GameObject> contact_objects;
     
-    // Start is called before the first frame update
     void Start()
     {
         contact_objects = new List<GameObject>();
@@ -19,10 +18,7 @@ public class Escalator : MonoBehaviour
         base_position = transform.localPosition;
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float dist = Vector3.Distance(transform.position, base_position);
 

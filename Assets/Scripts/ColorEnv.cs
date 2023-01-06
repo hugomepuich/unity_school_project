@@ -10,18 +10,12 @@ public class ColorEnv : MonoBehaviour
     public bool inverted;
     public bool trap;
     
-    // Start is called before the first frame update
     void Awake()
     {
         ApplyColorRecursive(my_color, this.transform);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Returns Item Color
     public ItemColor GetColor()
     {
         return my_color;
@@ -32,6 +26,7 @@ public class ColorEnv : MonoBehaviour
         return ItemColorToMaterialColor(my_color);
     }
 
+    // Applies the color to all childrens
     void ApplyColorRecursive(ItemColor c, Transform obj)
     {
         MeshRenderer m = obj.GetComponent<MeshRenderer>();

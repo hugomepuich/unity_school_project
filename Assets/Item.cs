@@ -65,8 +65,6 @@ public class Item : MonoBehaviour
         }
     }
     
-    
-
     public void Interact()
     {
         if (destroyedOnCollect.Count > 0)

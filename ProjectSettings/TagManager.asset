@@ -8,6 +8,7 @@ TagManager:
   - coloritems
   - env
   - alwayswhite
+  - manager
   layers:
   - Default
   - TransparentFX
